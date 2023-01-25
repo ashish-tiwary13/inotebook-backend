@@ -26,7 +26,9 @@ async (req,res)=>{
     // Check whether the user with this email exist already
     try {
     let user = await User.findOne({email: req.body.email});
+    let msg="";
     if(user){
+        msg="Sorry a use with this email already exist";
         return res.status(400).json({error: "Sorry a use with this email already exist",user})
     }
     const salt = await bcrypt.genSalt(10);
@@ -44,7 +46,7 @@ async (req,res)=>{
     }
     success=true;
     const authToken = jwt.sign(data , JWT_SECRET);
-    res.json({success,authToken});
+    res.json({success,authToken,msg});
     // console.log({authToken});
     //Catch errors
     } catch (err) {
