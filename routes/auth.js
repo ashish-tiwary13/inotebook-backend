@@ -44,9 +44,10 @@ async (req,res)=>{
             id: user.id
         }
     }
+    const username = user.name;
     success=true;
     const authToken = jwt.sign(data , JWT_SECRET);
-    res.json({success,authToken,msg});
+    res.json({success,authToken,username,msg});
     // console.log({authToken});
     //Catch errors
     } catch (err) {
