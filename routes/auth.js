@@ -45,9 +45,10 @@ async (req,res)=>{
         }
     }
     const username = user.name;
+    const emailId = user.email;
     success=true;
     const authToken = jwt.sign(data , JWT_SECRET);
-    res.json({success,authToken,username,msg});
+    res.json({success,authToken,username,emailId,msg});
     // console.log({authToken});
     //Catch errors
     } catch (err) {
@@ -87,10 +88,11 @@ router.post('/login',[
                 id: user.id
             }
         }
-        const username = user.name;
+        const username = user.name;  
+        const emailId = user.email;
         success=true;
         const authToken = jwt.sign(data , JWT_SECRET);
-        res.json({success,authToken,username});
+        res.json({success,authToken,username,emailId});
     //Catch errors
     } catch (err) {
         (err=> {console.log(err)
