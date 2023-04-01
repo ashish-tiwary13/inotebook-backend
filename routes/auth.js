@@ -11,9 +11,9 @@ const {JWT_SECRET}= require('../config/keys')
 //  ROUTE 1: create  a user using : POST "/api/auth/createUser". Donesn't reqiure Login
 router.post('/createUser',
 [
-    body('name',"Enter atleast 3 characters").isLength({ min: 3 }),
-    body('email',"Enter correect email").isEmail(),
-    body('password',"Enter atleast 5 characters").isLength({ min: 5 }),
+    body('name',"Plz enter atleast 3 characters in name").isLength({ min: 3 }),
+    body('email',"Plz enter correct email").isEmail(),
+    body('password',"Plz enter atleast 5 characters in password").isLength({ min: 5 }),
 ],
 async (req,res)=>{
     console.log(`email:${req.body.email}`);
